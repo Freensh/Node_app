@@ -23,13 +23,13 @@ pipeline {
         }
         stage('Buiding backend container'){
             steps {
-                dir(./backend/)
+                dir(.\backend\)
                 backendImage = docker.build backendRegistry + ":$BUILD_NUMBER"
             }
         }
         stage ('Buiilding frontend image') {
             steps {
-                dir(./frontend/)
+                dir(.\frontend\)
                 frontendImage = docker.build frontendRegistry + ":$BUILD_NUMBER"
             }
         }
