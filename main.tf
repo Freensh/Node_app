@@ -25,6 +25,19 @@ data "aws_security_group" "frontend_sg" {
     name = "${var.frontend_app_name}-sg"
   
 }
+data "aws_subnet" "public1" {
+  filter {
+    name   = "tag:Name"
+    values = ["${var.project_name}-public-us-east-2a"]
+  }
+}
+data "aws_subnet" "public2" {
+  filter {
+    name   = "tag:Name"
+    values = ["${var.project_name}-public-us-east-2b"]
+  }
+}
+
 
 # ~~~~~~~~~~~~~~~~~~~~~ Getting LoadBalancer ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -103,7 +116,7 @@ resource "aws_ecs_service" "backend_svc" {
 
     network_configuration {
       security_groups = [ data.aws_security_group.backend_sg.id]
-      subnets = ["subnet-0ff6ace371b0cfdaf", "subnet-006b687e5552cdaf2"]
+      subnets = [data.aws_subnet.public1, data.aws_subnet.public2]
       assign_public_ip = true
     }
 
@@ -162,7 +175,7 @@ resource "aws_ecs_service" "frontend_svc" {
 
     network_configuration {
       security_groups = [ data.aws_subnets.public_subnets.id ]
-      subnets = ["subnet-02edbaa1ce675d546", "subnet-06993722a55f99adf"]
+      subnets = [data.aws_subnet.public1, data.aws_subnet.public2]
     }
 
     load_balancer {
