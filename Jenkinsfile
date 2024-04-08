@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage ('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Freensh/Node-challenge-backend.git'
+                git branch: 'main', url: 'https://github.com/Freensh/Node_app.git'
             }
         }
 
