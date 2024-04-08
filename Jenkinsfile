@@ -33,7 +33,9 @@ pipeline {
         stage ('Buiilding frontend image') {
             steps {
                 dir('frontend') {
-                    frontendImage = docker.build frontendRegistry + ":$BUILD_NUMBER"
+                    script {
+                        frontendImage = docker.build frontendRegistry + ":$BUILD_NUMBER"
+                    }
                 }
             }
         }
