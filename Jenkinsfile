@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-        backendRegistry = ''
-        frontendRegistry = ''
-        registryCredential = ''
+        backendRegistry = '939083599624.dkr.ecr.us-east-2.amazonaws.com/node-backend-repo'
+        frontendRegistry = '939083599624.dkr.ecr.us-east-2.amazonaws.com/node-frontend-repo'
+        registryCredential = 'node-credentials'
         backendImage = ''
         frontendImage = ''
     }
