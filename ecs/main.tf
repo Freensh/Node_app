@@ -92,7 +92,7 @@ resource "aws_lb" "frontend_lb" {
 
 resource "aws_lb" "backend_lb" {
   name            = "${var.backend_app_name}-lb"
-  subnets         = [module.vpc.private_subnets[0], module.vpc.private_subnets[1]]
+  subnets         = [module.vpc.public_subnets[0], module.vpc.public_subnets[1]]
   security_groups = [aws_security_group.backend_sg.id]
 }
 
