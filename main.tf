@@ -141,7 +141,7 @@ resource "aws_ecs_task_definition" "frontend_task_definition" {
     [
         {
             "name": "${var.frontend_app_name}",
-            "image": "${data.aws_ecr_repository.repo.repository_url}:${var.image_tag}",
+            "image": "${data.aws_ecr_repository.front_repo.repository_url}:${var.image_tag}",
             "essential": true,
             "cpu": ${var.cpu},
             "memory": ${var.memory},
@@ -174,7 +174,7 @@ resource "aws_ecs_service" "frontend_svc" {
     desired_count = 4
 
     network_configuration {
-      security_groups = [ data.aws_subnets.public_subnets.id ]
+      security_groups = [data.aws_security_group.frontend_sg.id ]
       subnets = [data.aws_subnet.public1, data.aws_subnet.public2]
     }
 
