@@ -28,7 +28,6 @@ pipeline {
             steps{
                 backendImage = docker.build backendRegistry + ":$BUILD_NUMBER"
             } 
-            }
         }
         stage ('Buiilding frontend image') {
             steps {
@@ -69,3 +68,4 @@ pipeline {
             }
         }
     }
+}
