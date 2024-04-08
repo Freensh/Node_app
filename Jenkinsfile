@@ -23,19 +23,16 @@ pipeline {
         }
         stage('Buiding backend container'){
             steps {
-                dir('backend')
-            }
-            steps{
-                backendImage = docker.build backendRegistry + ":$BUILD_NUMBER"
+                dir('backend') {
+                    backendImage = docker.build backendRegistry + ":$BUILD_NUMBER"
+                }
             } 
         }
         stage ('Buiilding frontend image') {
             steps {
-                dir('frontend')
-            }
-            steps{
-                frontendImage = docker.build frontendRegistry + ":$BUILD_NUMBER"
-                
+                dir('frontend') {
+                    frontendImage = docker.build frontendRegistry + ":$BUILD_NUMBER"
+                }
             }
         }
         stage ('Pushing Backend Image to ECR'){
