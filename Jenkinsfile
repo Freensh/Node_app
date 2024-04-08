@@ -36,7 +36,7 @@ pipeline {
         stage ('Pushing Backend Image to ECR'){
             steps {
                 script {
-                    docker.withRegistry("https://"+backendRegistry, "ecr:us-east-1:"+registryCredential){
+                    docker.withRegistry("https://"+backendRegistry, "ecr:us-east-2:"+registryCredential){
                         backendImage.push()
                     }
                 }
@@ -45,7 +45,7 @@ pipeline {
         stage ('Pushing Frontend Image to ECR'){
             steps {
                 script {
-                    docker.withRegistry("https://"+frontendRegistry, "ecr:us-east-1:"+ registryCredential){
+                    docker.withRegistry("https://"+frontendRegistry, "ecr:us-east-2:"+ registryCredential){
                         frontendImage.push()
                     }
                 }
