@@ -4,7 +4,7 @@ pipeline {
     environment {
         backendRegistry = ''
         frontendRegistry = ''
-        registryCredential = 'challenge'
+        registryCredential = ''
         backendImage = ''
         frontendImage = ''
     }
