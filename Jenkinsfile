@@ -24,7 +24,9 @@ pipeline {
         stage('Buiding backend container'){
             steps {
                 dir('backend') {
-                    backendImage = docker.build backendRegistry + ":$BUILD_NUMBER"
+                    script{
+                        backendImage = docker.build backendRegistry + ":$BUILD_NUMBER"
+                    }
                 }
             } 
         }
