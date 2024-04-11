@@ -55,7 +55,7 @@ data "aws_alb_target_group" "backend_tg" {
 }
 
 data "aws_alb_target_group" "frontend_tg" {
-    name = "${var.frontend_app_name}-target-group"
+    name = "${var.frontend_app_name}-targets-group"
 }
 
 # ~~~~~~~~~~~~~~~~ Getting ecr repository~~~~~~~~~~~~~~
