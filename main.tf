@@ -116,7 +116,7 @@ resource "aws_ecs_service" "backend_svc" {
 
     network_configuration {
       security_groups = [ data.aws_security_group.backend_sg.id]
-      subnets = [data.aws_subnet.public1, data.aws_subnet.public2]
+      subnets = [data.aws_subnet.public1.id, data.aws_subnet.public2.id]
       assign_public_ip = true
     }
 
@@ -175,7 +175,7 @@ resource "aws_ecs_service" "frontend_svc" {
 
     network_configuration {
       security_groups = [data.aws_security_group.frontend_sg.id ]
-      subnets = [data.aws_subnet.public1, data.aws_subnet.public2]
+      subnets = [data.aws_subnet.public1.id, data.aws_subnet.public2.id]
     }
 
     load_balancer {
