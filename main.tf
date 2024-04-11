@@ -176,10 +176,11 @@ resource "aws_ecs_service" "frontend_svc" {
     network_configuration {
       security_groups = [data.aws_security_group.frontend_sg.id ]
       subnets = [data.aws_subnet.public1.id, data.aws_subnet.public2.id]
+      assign_public_ip = true
     }
 
     load_balancer {
-      target_group_arn = data.aws_alb_target_group.frontend_tg.arn
+      target_group_arn = data.aws_alb_target_group.frontend_tg.id
       container_name = var.frontend_app_name
       container_port = var.frontend_port
     }
